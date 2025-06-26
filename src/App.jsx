@@ -4,13 +4,11 @@ import EmployeeDashboard from "./components/Dashboard/employeeDashboard";
 import AdminDashboard from "./components/Dashboard/adminDashboard";
 import { AuthContext } from "./context/AuthProvider";
 import { setLocalStorage } from "./utils/localStorage";
-// import { stringify } from 'postcss';
 
 const App = () => {
   const [user, setUser] = useState(null);
   const [loggedInUserData, setLoggedInUserData] = useState(null);
   const AuthData = useContext(AuthContext);
-  // console.log(AuthData)
 
   useEffect(() => {
     if (AuthData) {
@@ -31,7 +29,6 @@ const App = () => {
   const handleLogin = (email, password) => {
     if (email === "admin@me.com" && password === "123") {
       setUser("admin");
-      // console.log(user)
       const admin = AuthData.adminData.find(
         (e) => email === e.email && e.password === password
       );
