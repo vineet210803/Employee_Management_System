@@ -3,7 +3,7 @@ import Login from "./components/Auth/Login";
 import EmployeeDashboard from "./components/Dashboard/employeeDashboard";
 import AdminDashboard from "./components/Dashboard/adminDashboard";
 import { AuthContext } from "./context/AuthProvider";
-import { setLocalStorage } from "./utils/localStorage";
+// import { setLocalStorage } from "./utils/localStorage";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -27,11 +27,11 @@ const App = () => {
   }, [AuthData]);
 
   const handleLogin = (email, password) => {
-    if (email === "admin@me.com" && password === "123") {
-      setUser("admin");
+    if (AuthData?.adminData) {
       const admin = AuthData.adminData.find(
         (e) => email === e.email && e.password === password
       );
+      setUser("admin");
       setLoggedInUserData(admin);
       localStorage.setItem(
         "userLogInHai",
@@ -57,8 +57,8 @@ const App = () => {
   return (
     <>
       {user === null && <Login handleLogin={handleLogin} />}
-      {user === "admin" && <AdminDashboard data={loggedInUserData} />}
-      {user === "employee" && <EmployeeDashboard data={loggedInUserData} />}
+      {user === "admin" && <AdminDashboard data={loggedInUserData} changeUser={setUser} />}
+      {user === "employee" && <EmployeeDashboard data={loggedInUserData} changeUser={setUser} />}
     </>
   );
 };

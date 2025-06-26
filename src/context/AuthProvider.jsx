@@ -5,7 +5,7 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   // localStorage.clear()
-  setLocalStorage();
+  // setLocalStorage();
   const [userData, setUserData] = useState(null);
   // console.log(userData)
 

@@ -1,11 +1,12 @@
 import React from 'react';
 
-const Header = ({ data }) => {
+const Header = (props) => {
   const logOutUser = () => {
-    const confirmLogOut = window.confirm("Are you sure you want to LogOut?");
+    const confirmLogOut = window.confirm("Are you sure you want to Logout?");
     if (confirmLogOut) {
       localStorage.setItem("userLogInHai", "");
-      window.location.reload();
+      props.changeUser(null)
+      // window.location.reload();
     }
   };
 
@@ -15,7 +16,7 @@ const Header = ({ data }) => {
         Hello <br />
         <div className='flex items-center'>
           <div className="text-3xl font-semibold hover:scale-110 transition-transform duration-200 cursor-pointer text-violet-400 ">
-          {data.firstName} 
+          {props.data.firstName} 
         </div>
         <h1 className='ml-2'>👋</h1>
         </div>

@@ -3,7 +3,7 @@ const employeesData = [
     {
         "id": 1,
         "firstName": "Arjun",
-        "email": "e@e.com",
+        "email": "a@1.com",
         "password": "123",
         "taskCounts": {
             "active": 2,
@@ -47,7 +47,7 @@ const employeesData = [
     {
         "id": 2,
         "firstName": "Sneha",
-        "email": "employee2@example.com",
+        "email": "s@2.com.com",
         "password": "123",
         "taskCounts": {
             "active": 1,
@@ -81,7 +81,7 @@ const employeesData = [
     {
         "id": 3,
         "firstName": "Ravi",
-        "email": "employee3@example.com",
+        "email": "r@3.com.com",
         "password": "123",
         "taskCounts": {
             "active": 2,
@@ -124,9 +124,9 @@ const employeesData = [
     },
     {
         "id": 4,
-        "firstName": "ritika",
-        "email": "ritika.hata@gmail.com",
-        "password": "ritikakutti700",
+        "firstName": "John",
+        "email": "j@4.com",
+        "password": "123",
         "taskCounts": {
             "active": 2,
             "newTask": 1,
@@ -159,7 +159,7 @@ const employeesData = [
     {
         "id": 5,
         "firstName": "Karan",
-        "email": "employee5@example.com",
+        "email": "k@5.com",
         "password": "123",
         "taskCounts": {
             "active": 2,
@@ -206,7 +206,7 @@ const employeesData = [
 const adminData = [{
     "id": 1,
     "firstName": "Vineet",
-    "email": "admin@me.com",
+    "email": "v@me.com",
     "password": "123"
 }];
 
