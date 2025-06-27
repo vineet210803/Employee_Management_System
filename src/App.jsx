@@ -3,7 +3,6 @@ import Login from "./components/Auth/Login";
 import EmployeeDashboard from "./components/Dashboard/employeeDashboard";
 import AdminDashboard from "./components/Dashboard/adminDashboard";
 import { AuthContext } from "./context/AuthProvider";
-// import { setLocalStorage } from "./utils/localStorage";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -27,38 +26,45 @@ const App = () => {
   }, [AuthData]);
 
   const handleLogin = (email, password) => {
-    if (AuthData?.adminData) {
+    if (AuthData) {
       const admin = AuthData.adminData.find(
         (e) => email === e.email && e.password === password
       );
-      setUser("admin");
-      setLoggedInUserData(admin);
-      localStorage.setItem(
-        "userLogInHai",
-        JSON.stringify({ role: "admin", admin })
-      );
-    } else if (AuthData?.employeesData) {
       const employee = AuthData.employeesData.find(
         (e) => email === e.email && e.password === password
       );
-      if (employee) {
+      if(admin){
+        setUser("admin");
+        setLoggedInUserData(admin);
+        localStorage.setItem(
+          "userLogInHai",
+          JSON.stringify({ role: "admin", admin })
+        );
+      }
+      else if(employee){
         setUser("employee");
         setLoggedInUserData(employee);
         localStorage.setItem(
           "userLogInHai",
           JSON.stringify({ role: "employee", employee })
         );
+      }else{
+        alert("Invalid user credential")
       }
     } else {
-      alert("Invalid user credentials");
+      alert("Invalid user credential");
     }
   };
 
   return (
     <>
       {user === null && <Login handleLogin={handleLogin} />}
-      {user === "admin" && <AdminDashboard data={loggedInUserData} changeUser={setUser} />}
-      {user === "employee" && <EmployeeDashboard data={loggedInUserData} changeUser={setUser} />}
+      {user === "admin" && (
+        <AdminDashboard data={loggedInUserData} changeUser={setUser} />
+      )}
+      {user === "employee" && (
+        <EmployeeDashboard data={loggedInUserData} changeUser={setUser} />
+      )}
     </>
   );
 };
