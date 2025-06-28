@@ -21,26 +21,22 @@ const CreateNewTask = () => {
     // console.log(e.target.name)
     // console.log(e.target.value)
   };
+  console.log(taskData)
 
   const creatingTask = (e) => {
     e.preventDefault();
-
     const employees = JSON.parse(localStorage.getItem('employeesData')) || [];
     // console.log(employees)
-
     // Find employee by first name (case-sensitive, or convert both to lowercase for case-insensitive)
     const matchedEmployeeIndex = employees.findIndex(
       emp => emp.firstName.trim().toLowerCase() === taskData.assignTo.trim().toLowerCase()
     );
-
-
     if (matchedEmployeeIndex === -1) {
       alert('No employee found with that name');
       return;
     }
-
     const newTask = {
-      active: true,
+      active: false,
       newTask: true,
       completed: false,
       failed: false,
@@ -52,13 +48,10 @@ const CreateNewTask = () => {
     // console.log(newTask)
 
     employees[matchedEmployeeIndex].tasks.push(newTask);
-
     employees[matchedEmployeeIndex].taskCounts.newTask += 1;
-    employees[matchedEmployeeIndex].taskCounts.active += 1;
-
+    // employees[matchedEmployeeIndex].taskCounts.active += 1;
     const newData=localStorage.setItem('employeesData', JSON.stringify(employees));
     // console.log(newData)
-
     alert('Task assigned to ' + employees[matchedEmployeeIndex].firstName);
 
     setTaskData({

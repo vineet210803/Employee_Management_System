@@ -1,20 +1,19 @@
-import React from 'react'
+import React from 'react';
 
-const FailedTask = () => {
+const FailedTask = ({ data }) => {
   return (
-    <div className='flex-shrink-0 h-full w-[300px] bg-blue-950 rounded-2xl '>
-        <div className='flex justify-between items-center p-3'>
-            <h2 className='bg-blue-900 rounded text-sm p-1'>{data.category}</h2>
-            <h3 className='text-sm'>{data.taskDate}</h3>
-        </div>
-        <h1 className='text-2xl mx-2 font-bold mt-2 '>{data.taskTitle}</h1>
-        <p className='m-2 text-sm'>{data.taskDescription}</p>
-        <div className='flex justify-between m-2 p-2 gap-5 '>
-         {/* <button className='bg-green-500 p-2 text-sm rounded-md hover:scale-105 transition duration-200'>Mark as completed</button> */}
-         <button className='bg-red-500 p-2  text-sm rounded-md hover:scale-105 transition duration-200'>Failed</button>
-        </div>
+    <div className='flex-shrink-0 w-[300px] bg-gradient-to-br from-red-400 to-red-800 text-white rounded-2xl shadow-lg p-4'>
+      <div className='flex justify-between items-center'>
+        <h2 className='bg-red-700 text-xs px-2 py-1 rounded'>{data.category}</h2>
+        <h3 className='text-sm'>{data.taskDate}</h3>
       </div>
-  )
-}
+      <h1 className='text-xl font-bold mt-3'>{data.taskTitle}</h1>
+      <p className='text-sm mt-2'>{data.taskDescription}</p>
+      <div className='flex justify-center mt-4'>
+        <span className='bg-white text-red-800 font-semibold px-4 py-2 rounded-md text-sm'>Task Failed</span>
+      </div>
+    </div>
+  );
+};
 
-export default FailedTask
+export default FailedTask;
